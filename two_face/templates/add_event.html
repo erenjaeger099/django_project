@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Add Event</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+    crossorigin="anonymous"
+  />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'sign_.css' %}" />
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
+  </head>
+  <body>
+    <div class="bgea ellipse"></div>
+    <div class="bgeb ellipse"></div>
+    <div class="bgec ellipse"></div>
+    <div class="nav glass">
+      <div class="logo">
+        <img src="" alt="" />
+        <!-- <span>logo</span> -->
+      </div>
+      <div class="navlinks">
+        <a class="glass" style="padding: 4px 10px" href="home">Home</a>
+        <a class="glass" style="padding: 4px 10px" href="about_us">About us</a>
+        <!-- <a class="glass" style="padding: 4px 10px" href="">Contact</a> -->
+      </div>
+      <div class="profile" style="visibility:hidden;">
+        <a
+          class="glass"
+          style="padding: 4px 10px; text-decoration: none"
+          href="signin"
+          >Login</a
+        >
+      </div>
+    </div>
+    <div class="container">
+      <center>
+      <h2>Add an event</h2>
+      </center>
+      <form action="add_event" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="na_event">
+        <label class="data_i" for="name">
+          Name of Event :<br />
+          <input class="data_i glass" name="name" required />
+        </label>
+          <label class="data_i" for="poster">
+            Poster of Event :<br />
+            <input type="file" name="poster" required /><br />
+          </label>
+        </div>
+          <br />
+          
+        
+        <div class="time">
+        <label class="data_i" for="start">
+          From :<br />
+          <input type="date" class="data_i glass" name="start" required />
+          <br />
+        </label>
+        <label class="data_i" for="end">
+          To :<br />
+          <input type="date" class="data_i glass" name="end" requried />
+          <br />
+        </label>
+        <label class="data_i" for="genre">
+          Genre of Event :<br />
+          <select type="radio" class="data_i glass" name="genre" required>
+            <option value="technical">Technical</option>
+            <option value="art">Art</option>
+            <option value="music">Music</option>
+            <option value="dance">Dance</option>
+            <option value="other">others</option>
+          </select>
+          <br />
+        </label>
+      </div>
+        <label {% load static %}class="data_i" for="eligibility">
+          Eligibility :<br />
+          <input class="data_i glass" name="eligibility" required />
+          <br />
+        </label>
+        <!-- <label class="data_i" for="short_desc">
+          Short Description :<br />
+          <textarea class="data_i glass" name="short_desc" required></textarea
+          ><br />
+        </label> -->
+        <label class="data_i" for="description">
+          Description :<br />
+          <textarea class="data_i glass" name="description" required></textarea
+          ><br />
+        </label>
+        <label class="data_i" for="prize">
+          Prize :<br />
+          <input
+            type="text"
+            class="data_i glass"
+            name="prize"
+            required
+          /><br />
+        </label>
+        <label class="data_i" for="link">
+          Link :<br />
+          <input type="text" class="data_i glass" name="link" required /><br />
+        </label>
+        <!-- <label class="data_i" for="add_link">
+          Additional link :<br />
+          <input type="text" class="data_i glass" name="add_link" /><br />
+        </label> -->
+        <center>
+          <p style="color:red;font-weight:500;">{{msg}}</p>
+          <p style="color:green;font-weight:500;">{{msg1}}</p>
+        <button class="sub_btn glass"type="submit">Submit</button>
+        </center>
+      </form>
+    </div>
+  </body>
+</html>
